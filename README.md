@@ -62,7 +62,7 @@ The basic project structure is as follows:
 - **JwtTokenUtil.java**: A utility class for generating and validating JWT tokens.
 - **SwaggerConfig.java**: The Swagger configuration to generate automatic API documentation.
 
-## Dependencies
+### Dependencies
 
 The key dependencies in this project are:
 
@@ -73,7 +73,7 @@ The key dependencies in this project are:
 
 The dependencies can be found in the `pom.xml` file.
 
-## Running the Project
+### Running the Project
 
 To run the project locally, follow these steps:
 
@@ -87,7 +87,7 @@ To run the project locally, follow these steps:
 3. **Run the application: To run the application locally:**:
   ```mvn spring-boot:run```
 
-Alternatively, you can run the ContentctrlApplication class directly from your IDE.
+### Alternatively, you can run the ContentctrlApplication class directly from your IDE.
 
 4. **Access the application:**:
 5. The API will be available at http://localhost:8080. 
@@ -96,24 +96,28 @@ Alternatively, you can run the ContentctrlApplication class directly from your I
 - **Access the Swagger API documentation at: http://localhost:8080/swagger-ui/.**: 
 - **The Swagger interface allows you to interact with the API directly from the browser and test the endpoints.**: 
 
-Usage Examples
+### Usage Examples
 - **Endpoint: Login**: 
 - **Method: POST**: 
 - **URL: /api/auth/login**: 
 - **Description: Logs the user in and returns a JWT token if authentication is successful.**: 
 - **Request Body:**: 
+
   ``` json 
    {
      "username": "user",
      "password": "password"
    }
    ```
+   
 - **Response:
+
   ``` json
    {
      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
    }
   ```
+  
 - **Endpoint: Register User**: 
 - **Method: POST**: 
 - **URL: /api/auth/register**: 
@@ -149,9 +153,9 @@ If you want to contribute to this project, follow these steps:
 - **This project is licensed under the MIT License. See the LICENSE file for more details.**: 
 
 ### Javadoc
-    - **To generate the Javadoc documentation, use the following command:**:  
-	- **mvn javadoc:javadoc**: 
-	- **You can then access the generated documentation in the target/site/apidocs directory.**: 
+- **To generate the Javadoc documentation, use the following command:**:  
+``` mvn javadoc:javadoc ```
+- **You can then access the generated documentation in the target/site/apidocs directory.**: 
 
 ### See images of the project below
 - **Swagger**: 
