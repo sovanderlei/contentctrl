@@ -63,8 +63,84 @@ To run the project locally, follow these steps:
 3. **Run the application: To run the application locally:**:
   mvn spring-boot:run
 
+Alternatively, you can run the ContentctrlApplication class directly from your IDE.
 
+4. **Access the application:**:
+5. The API will be available at http://localhost:8080. 
 
+6. **Test the API:**:
+
+Access the Swagger API documentation at: http://localhost:8080/swagger-ui/.
+The Swagger interface allows you to interact with the API directly from the browser and test the endpoints.
+
+Usage Examples
+Endpoint: Login
+Method: POST
+URL: /api/auth/login
+Description: Logs the user in and returns a JWT token if authentication is successful.
+Request Body:
+json
+Copy
+Edit
+{
+  "username": "user",
+  "password": "password"
+}
+Response:
+json
+Copy
+Edit
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+Endpoint: Register User
+Method: POST
+URL: /api/auth/register
+Description: Registers a new user in the system.
+Request Body:
+json
+Copy
+Edit
+{
+  "username": "new_user",
+  "password": "new_password"
+}
+Protected Endpoint
+Method: GET
+URL: /api/protected
+Description: A protected endpoint that can only be accessed with a valid JWT token.
+Headers:
+makefile
+Copy
+Edit
+Authorization: Bearer <token>
+Swagger Documentation
+Swagger is integrated into the project to provide an interactive interface for testing the API endpoints.
+
+Access the Swagger interface at: http://localhost:8080/swagger-ui/.
+Contributing
+If you want to contribute to this project, follow these steps:
+
+Fork this repository.
+Create a new branch: git checkout -b my-contribution.
+Make the desired changes.
+Commit and push to your branch: git push origin my-contribution.
+Open a pull request for review.
+License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+Javadoc
+In addition to all the documentation provided in the README.md, the class, method, and package documentation can be accessed through Javadoc. To generate the Javadoc documentation, use the following command:
+
+bash
+Copy
+Edit
+mvn javadoc:javadoc
+You can then access the generated documentation in the target/site/apidocs directory.
+
+yaml
+Copy
+Edit
 
 
 
