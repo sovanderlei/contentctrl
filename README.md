@@ -93,15 +93,15 @@ Alternatively, you can run the ContentctrlApplication class directly from your I
 5. The API will be available at http://localhost:8080. 
 
 6. **Test the API:**: 
-- **Access the Swagger API documentation at: http://localhost:8080/swagger-ui/.
-- **The Swagger interface allows you to interact with the API directly from the browser and test the endpoints.
+- **Access the Swagger API documentation at: http://localhost:8080/swagger-ui/.**: 
+- **The Swagger interface allows you to interact with the API directly from the browser and test the endpoints.**: 
 
 Usage Examples
-- **Endpoint: Login
-- **Method: POST
-- **URL: /api/auth/login
-- **Description: Logs the user in and returns a JWT token if authentication is successful.
-- **Request Body:
+- **Endpoint: Login**: 
+- **Method: POST**: 
+- **URL: /api/auth/login**: 
+- **Description: Logs the user in and returns a JWT token if authentication is successful.**: 
+- **Request Body:**: 
    json 
    {
      "username": "user",
@@ -113,38 +113,38 @@ Usage Examples
      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
    }
   
-- **Endpoint: Register User
-- **Method: POST
-- **URL: /api/auth/register
-- **Description: Registers a new user in the system.
-- **Request Body:
+- **Endpoint: Register User**: 
+- **Method: POST**: 
+- **URL: /api/auth/register**: 
+- **Description: Registers a new user in the system.**: 
+- **Request Body:**: 
    json 
    {
      "username": "new_user",
      "password": "new_password"
    }
-- **Protected Endpoint
-- **Method: GET
-- **URL: /api/protected
-- **Description: A protected endpoint that can only be accessed with a valid JWT token.
-- **Headers:
-- **makefile
+- **Protected Endpoint**: 
+- **Method: GET**: 
+- **URL: /api/protected**: 
+- **Description: A protected endpoint that can only be accessed with a valid JWT token.**: 
+- **Headers:**: 
+- **makefile**: 
  
 ### Authorization: Bearer <token>
-- **Swagger Documentation
-- **Swagger is integrated into the project to provide an interactive interface for testing the API endpoints.
+- **Swagger Documentation**: 
+- **Swagger is integrated into the project to provide an interactive interface for testing the API endpoints.**: 
 
 Access the Swagger interface at: http://localhost:8080/swagger-ui/.
 Contributing
 If you want to contribute to this project, follow these steps:
 
 ### Fork this repository.
-- **Create a new branch: git checkout -b my-contribution.
-- **Make the desired changes.
-- **Commit and push to your branch: git push origin my-contribution.
-- **Open a pull request for review.
-- **License
-- **This project is licensed under the MIT License. See the LICENSE file for more details.
+- **Create a new branch: git checkout -b my-contribution.**: 
+- **Make the desired changes.**: 
+- **Commit and push to your branch: git push origin my-contribution.**: 
+- **Open a pull request for review.**: 
+- **License**: 
+- **This project is licensed under the MIT License. See the LICENSE file for more details.**: 
 
 ### Javadoc
     - **To generate the Javadoc documentation, use the following command: 
@@ -152,7 +152,7 @@ If you want to contribute to this project, follow these steps:
 	- **You can then access the generated documentation in the target/site/apidocs directory.
 
 ### See images of the project below
-- **Swagger
+- **Swagger**: 
 ![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/swagger001.png)
 
 
