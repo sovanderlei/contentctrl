@@ -147,13 +147,13 @@ If you want to contribute to this project, follow these steps:
 - **This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ### Javadoc
-In addition to all the documentation provided in the README.md, the class, method, and package documentation can be accessed through Javadoc. To generate the Javadoc documentation, use the following command:
+    - **To generate the Javadoc documentation, use the following command: 
+	- **mvn javadoc:javadoc
+	- **You can then access the generated documentation in the target/site/apidocs directory.
 
- 
-mvn javadoc:javadoc
-You can then access the generated documentation in the target/site/apidocs directory.
-
- 
+### See images of the project below
+- **Swagger
+![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/swagger001.png)
 
 
 
