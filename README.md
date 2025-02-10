@@ -28,9 +28,9 @@ The basic project structure is as follows:
 
 ### Explanation of Folders:
   
-- **src/
-- **│ 
-- **├── main/
+- src/
+- │ 
+- ├── main/
 │ ├── java/ 
 │ │ └── com/ 
 │ │ └── api/ 
