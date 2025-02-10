@@ -31,25 +31,25 @@ The basic project structure is as follows:
 - src/
 - │ 
 - ├── main/
-│ ├── java/ 
-│ │ └── com/ 
-│ │ └── api/ 
-│ │ └── contentctrl/ 
-│ │ ├── ContentctrlApplication.java # Main class of the Spring Boot application 
-│ │ ├── config/ # Security, JWT, and Swagger configurations 
-│ │ ├── controller/ # REST API controllers 
-│ │ ├── model/ # Data models, such as the User 
-│ │ └── service/ # Business logic, such as user manipulation 
-│ ├── resources/ 
-│ │ ├── application.properties # Spring Boot configuration 
-│ │ └── static/ # Static files (if necessary) 
-│ └── test/ 
-│ └── java/ 
-│ └── com/ 
-│ └── api/ 
-│ └── contentctrl/ 
-│ ├── service/ # Unit tests for services 
-│ └── controller/ # Tests for the API controllers
+- │ ├── java/ 
+- │ │ └── com/ 
+- │ │ └── api/ 
+- │ │ └── contentctrl/ 
+- │ │ ├── ContentctrlApplication.java # Main class of the Spring Boot application 
+- │ │ ├── config/ # Security, JWT, and Swagger configurations 
+- │ │ ├── controller/ # REST API controllers 
+- │ │ ├── model/ # Data models, such as the User 
+- │ │ └── service/ # Business logic, such as user manipulation 
+- │ ├── resources/ 
+- │ │ ├── application.properties # Spring Boot configuration 
+- │ │ └── static/ # Static files (if necessary) 
+- │ └── test/ 
+- │ └── java/ 
+- │ └── com/ 
+- │ └── api/ 
+- │ └── contentctrl/ 
+- │ ├── service/ # Unit tests for services 
+- │ └── controller/ # Tests for the API controllers
 
  
 
