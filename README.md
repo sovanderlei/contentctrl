@@ -27,25 +27,31 @@ The basic project structure is as follows:
 
 
 ### Explanation of Folders:
+  
+src/
+│ 
+├── main/
+│ ├── java/ 
+│ │ └── com/ 
+│ │ └── api/ 
+│ │ └── contentctrl/ 
+│ │ ├── ContentctrlApplication.java # Main class of the Spring Boot application 
+│ │ ├── config/ # Security, JWT, and Swagger configurations 
+│ │ ├── controller/ # REST API controllers 
+│ │ ├── model/ # Data models, such as the User 
+│ │ └── service/ # Business logic, such as user manipulation 
+│ ├── resources/ 
+│ │ ├── application.properties # Spring Boot configuration 
+│ │ └── static/ # Static files (if necessary) 
+│ └── test/ 
+│ └── java/ 
+│ └── com/ 
+│ └── api/ 
+│ └── contentctrl/ 
+│ ├── service/ # Unit tests for services 
+│ └── controller/ # Tests for the API controllers
+
  
-
-- **ContentctrlApplication.java**: The main class that launches the Spring Boot application.
-- **config/**: Contains configurations for security, JWT authentication, and Swagger setup.
-- **controller/**: Contains the REST API controllers that handle incoming requests.
-- **model/**: Includes data models such as the `User` entity.
-- **service/**: Contains the business logic of the application, including the manipulation of users and other entities.
-
-### Resources:
-- **application.properties**: Configuration file for Spring Boot.
-- **static/**: Folder for static files (if the application requires them).
-
-### Test:
-- **service/**: Contains unit tests for the services.
-- **controller/**: Contains tests for the API controllers.
-
-
-
-
 
 ### Key Components:
 
