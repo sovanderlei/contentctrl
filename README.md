@@ -27,6 +27,7 @@ The basic project structure is as follows:
 
 
 ### Explanation of Folders:
+ 
 
 - **ContentctrlApplication.java**: The main class that launches the Spring Boot application.
 - **config/**: Contains configurations for security, JWT authentication, and Swagger setup.
@@ -41,6 +42,7 @@ The basic project structure is as follows:
 ### Test:
 - **service/**: Contains unit tests for the services.
 - **controller/**: Contains tests for the API controllers.
+
 
 
 
