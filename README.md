@@ -1,4 +1,4 @@
-# Contentctrl - Spring Boot API with JWT and Swagger
+# Contentctrl - Spring Boot API with JWT, Swagger, JUnit, Mockito
 
 ## Project Description
 
@@ -27,7 +27,7 @@ The basic project structure is as follows:
 
 
 ### Explanation of Folders:
-  
+  ```
 - src/
 - │ 
 - ├── main/
@@ -50,7 +50,7 @@ The basic project structure is as follows:
 - │ └── contentctrl/ 
 - │ ├── service/ # Unit tests for services 
 - │ └── controller/ # Tests for the API controllers
-
+```
  
 
 ### Key Components:
@@ -78,14 +78,14 @@ The dependencies can be found in the `pom.xml` file.
 To run the project locally, follow these steps:
 
 1. **Clone the repository**:
-   ```bash
+  ```  bash
    git clone https://github.com/your-username/contentctrl.git
-
+```
 2. **Install the dependencies (if needed, run Maven or Gradle):**:
-   mvn install
+  ``` mvn install```
 
 3. **Run the application: To run the application locally:**:
-  mvn spring-boot:run
+  ```mvn spring-boot:run```
 
 Alternatively, you can run the ContentctrlApplication class directly from your IDE.
 
@@ -102,27 +102,29 @@ Usage Examples
 - **URL: /api/auth/login**: 
 - **Description: Logs the user in and returns a JWT token if authentication is successful.**: 
 - **Request Body:**: 
-   json 
+  ``` json 
    {
      "username": "user",
      "password": "password"
    }
+   ```
 - **Response:
-   json
+  ``` json
    {
      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
    }
-  
+  ```
 - **Endpoint: Register User**: 
 - **Method: POST**: 
 - **URL: /api/auth/register**: 
 - **Description: Registers a new user in the system.**: 
 - **Request Body:**: 
-   json 
+ ```  json 
    {
      "username": "new_user",
      "password": "new_password"
    }
+   ```
 - **Protected Endpoint**: 
 - **Method: GET**: 
 - **URL: /api/protected**: 
@@ -155,5 +157,37 @@ If you want to contribute to this project, follow these steps:
 - **Swagger**: 
 ![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/swagger001.png)
 
+## Testing
 
+The project uses **JUnit** and **Mockito** for unit testing and mocking dependencies in the controller layer.
 
+- **JUnit** is used for writing and running unit tests for the application's API controllers and services.
+- **Mockito** is used to mock service layer dependencies, allowing the controller logic to be tested in isolation without relying on actual database interactions or other services.
+
+### Testing Libraries Used:
+- **JUnit 5**: For writing and running unit tests.
+- **Mockito**: For mocking the behavior of dependencies (e.g., services) during the tests.
+- **MockMvc**: To simulate HTTP requests and test the controller endpoints in isolation.
+
+### Key Test Scenarios:
+- **Controller Tests**: Tests are written for each endpoint in the controllers (e.g., creating, retrieving, updating, and deleting resources).
+- **Mocking Services**: The service layer is mocked using Mockito to isolate controller logic during testing.
+- **API Response Validation**: Tests ensure that the correct HTTP status codes and response bodies are returned for each endpoint.
+
+### Example Test:
+
+```java
+@Test
+void testGetAllBranches() throws Exception {
+    // Mocking the service response
+    List<Branch> branchList = Arrays.asList(new Branch("Branch 1"), new Branch("Branch 2"));
+    when(branchService.getAllBranches()).thenReturn(branchList);
+
+    // Simulating the GET request and validating the response
+    mockMvc.perform(get("/contentctrl/branches"))
+           .andExpect(status().isOk())
+           .andExpect(jsonPath("$[0].name").value("Branch 1"))
+           .andExpect(jsonPath("$[1].name").value("Branch 2"));
+}
+```
+ 
