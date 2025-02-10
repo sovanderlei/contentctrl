@@ -80,16 +80,14 @@ URL: /api/auth/login
 Description: Logs the user in and returns a JWT token if authentication is successful.
 Request Body:
 json
-Copy
-Edit
+ 
 {
   "username": "user",
   "password": "password"
 }
 Response:
 json
-Copy
-Edit
+ 
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
@@ -99,8 +97,7 @@ URL: /api/auth/register
 Description: Registers a new user in the system.
 Request Body:
 json
-Copy
-Edit
+ 
 {
   "username": "new_user",
   "password": "new_password"
@@ -111,8 +108,7 @@ URL: /api/protected
 Description: A protected endpoint that can only be accessed with a valid JWT token.
 Headers:
 makefile
-Copy
-Edit
+ 
 Authorization: Bearer <token>
 Swagger Documentation
 Swagger is integrated into the project to provide an interactive interface for testing the API endpoints.
@@ -132,15 +128,11 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 Javadoc
 In addition to all the documentation provided in the README.md, the class, method, and package documentation can be accessed through Javadoc. To generate the Javadoc documentation, use the following command:
 
-bash
-Copy
-Edit
+ 
 mvn javadoc:javadoc
 You can then access the generated documentation in the target/site/apidocs directory.
 
-yaml
-Copy
-Edit
+ 
 
 
 
