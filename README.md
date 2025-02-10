@@ -147,9 +147,9 @@ If you want to contribute to this project, follow these steps:
 - **This project is licensed under the MIT License. See the LICENSE file for more details.**: 
 
 ### Javadoc
-    - **To generate the Javadoc documentation, use the following command: 
-	- **mvn javadoc:javadoc
-	- **You can then access the generated documentation in the target/site/apidocs directory.
+    - **To generate the Javadoc documentation, use the following command:**:  
+	- **mvn javadoc:javadoc**: 
+	- **You can then access the generated documentation in the target/site/apidocs directory.**: 
 
 ### See images of the project below
 - **Swagger**: 
