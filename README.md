@@ -151,15 +151,6 @@ mvn javadoc:javadoc
 You can then access the generated documentation in the target/site/apidocs directory.
 
  
-# Contentctrl - Spring Boot API with JWT and Swagger
-
-## Project Description
-
-**Contentctrl** is a backend system built using **Spring Boot**, designed to provide a RESTful API that implements authentication via **JWT** (JSON Web Tokens). The application also features automatic API documentation using **Swagger** and code documentation via **Javadoc**.
-
-The application is created to manage users and provide a secure system to control access to resources based on authentication and authorization. With JWT implementation, the system ensures that only authenticated users can access certain protected endpoints.
-
- 
 
 
 
