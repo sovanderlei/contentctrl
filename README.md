@@ -25,28 +25,23 @@ The application is created to manage users and provide a secure system to contro
 
 The basic project structure is as follows:
 
-src/
-│
-├── main/
-│   ├── java/
-│   │   └── com/
-│   │       └── api/
-│   │           └── contentctrl/
-│   │               ├── ContentctrlApplication.java  # Classe principal da aplicação Spring Boot
-│   │               ├── config/                    # Configurações de segurança, JWT e Swagger
-│   │               ├── controller/                # Controladores REST da API
-│   │               ├── model/                     # Modelos de dados, como o usuário
-│   │               └── service/                   # Lógica de negócios, como manipulação de usuários
-│   ├── resources/
-│   │   ├── application.properties                  # Configurações do Spring Boot
-│   │   └── static/                                # Arquivos estáticos (se necessário)
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── api/
-│                   └── contentctrl/
-│                       ├── service/               # Testes unitários dos serviços
-│                       └── controller/             # Testes dos controladores da API
+
+### Explanation of Folders:
+
+- **ContentctrlApplication.java**: The main class that launches the Spring Boot application.
+- **config/**: Contains configurations for security, JWT authentication, and Swagger setup.
+- **controller/**: Contains the REST API controllers that handle incoming requests.
+- **model/**: Includes data models such as the `User` entity.
+- **service/**: Contains the business logic of the application, including the manipulation of users and other entities.
+
+### Resources:
+- **application.properties**: Configuration file for Spring Boot.
+- **static/**: Folder for static files (if the application requires them).
+
+### Test:
+- **service/**: Contains unit tests for the services.
+- **controller/**: Contains tests for the API controllers.
+
 
 
 
