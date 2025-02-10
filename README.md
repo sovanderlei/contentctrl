@@ -25,7 +25,28 @@ The application is created to manage users and provide a secure system to contro
 
 The basic project structure is as follows:
 
-src/ │ ├── main/ │ ├── java/ │ │ └── com/ │ │ └── api/ │ │ └── contentctrl/ │ │ ├── ContentctrlApplication.java # Main Spring Boot application class │ │ ├── config/ # Security, JWT, and Swagger configurations │ │ ├── controller/ # REST controllers for API endpoints │ │ ├── model/ # Data models, such as the User │ │ └── service/ # Business logic, such as user management │ ├── resources/ │ │ ├── application.properties # Spring Boot configuration │ │ └── static/ # Static files (if needed) │ └── test/ │ └── java/ │ └── com/ │ └── api/ │ └── contentctrl/ │ ├── service/ # Unit tests for services │ └── controller/ # Tests for API controllers
+src/
+│
+├── main/
+│   ├── java/
+│   │   └── com/
+│   │       └── api/
+│   │           └── contentctrl/
+│   │               ├── ContentctrlApplication.java  # Classe principal da aplicação Spring Boot
+│   │               ├── config/                    # Configurações de segurança, JWT e Swagger
+│   │               ├── controller/                # Controladores REST da API
+│   │               ├── model/                     # Modelos de dados, como o usuário
+│   │               └── service/                   # Lógica de negócios, como manipulação de usuários
+│   ├── resources/
+│   │   ├── application.properties                  # Configurações do Spring Boot
+│   │   └── static/                                # Arquivos estáticos (se necessário)
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── api/
+│                   └── contentctrl/
+│                       ├── service/               # Testes unitários dos serviços
+│                       └── controller/             # Testes dos controladores da API
 
 
 
@@ -68,64 +89,61 @@ Alternatively, you can run the ContentctrlApplication class directly from your I
 4. **Access the application:**:
 5. The API will be available at http://localhost:8080. 
 
-6. **Test the API:**:
-
-Access the Swagger API documentation at: http://localhost:8080/swagger-ui/.
-The Swagger interface allows you to interact with the API directly from the browser and test the endpoints.
+6. **Test the API:**: 
+- **Access the Swagger API documentation at: http://localhost:8080/swagger-ui/.
+- **The Swagger interface allows you to interact with the API directly from the browser and test the endpoints.
 
 Usage Examples
-Endpoint: Login
-Method: POST
-URL: /api/auth/login
-Description: Logs the user in and returns a JWT token if authentication is successful.
-Request Body:
-json
+- **Endpoint: Login
+- **Method: POST
+- **URL: /api/auth/login
+- **Description: Logs the user in and returns a JWT token if authentication is successful.
+- **Request Body:
+   json 
+   {
+     "username": "user",
+     "password": "password"
+   }
+- **Response:
+   json
+   {
+     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+   }
+  
+- **Endpoint: Register User
+- **Method: POST
+- **URL: /api/auth/register
+- **Description: Registers a new user in the system.
+- **Request Body:
+   json 
+   {
+     "username": "new_user",
+     "password": "new_password"
+   }
+- **Protected Endpoint
+- **Method: GET
+- **URL: /api/protected
+- **Description: A protected endpoint that can only be accessed with a valid JWT token.
+- **Headers:
+- **makefile
  
-{
-  "username": "user",
-  "password": "password"
-}
-Response:
-json
- 
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-}
-Endpoint: Register User
-Method: POST
-URL: /api/auth/register
-Description: Registers a new user in the system.
-Request Body:
-json
- 
-{
-  "username": "new_user",
-  "password": "new_password"
-}
-Protected Endpoint
-Method: GET
-URL: /api/protected
-Description: A protected endpoint that can only be accessed with a valid JWT token.
-Headers:
-makefile
- 
-Authorization: Bearer <token>
-Swagger Documentation
-Swagger is integrated into the project to provide an interactive interface for testing the API endpoints.
+### Authorization: Bearer <token>
+- **Swagger Documentation
+- **Swagger is integrated into the project to provide an interactive interface for testing the API endpoints.
 
 Access the Swagger interface at: http://localhost:8080/swagger-ui/.
 Contributing
 If you want to contribute to this project, follow these steps:
 
-Fork this repository.
-Create a new branch: git checkout -b my-contribution.
-Make the desired changes.
-Commit and push to your branch: git push origin my-contribution.
-Open a pull request for review.
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+### Fork this repository.
+- **Create a new branch: git checkout -b my-contribution.
+- **Make the desired changes.
+- **Commit and push to your branch: git push origin my-contribution.
+- **Open a pull request for review.
+- **License
+- **This project is licensed under the MIT License. See the LICENSE file for more details.
 
-Javadoc
+### Javadoc
 In addition to all the documentation provided in the README.md, the class, method, and package documentation can be accessed through Javadoc. To generate the Javadoc documentation, use the following command:
 
  
@@ -133,7 +151,15 @@ mvn javadoc:javadoc
 You can then access the generated documentation in the target/site/apidocs directory.
 
  
+# Contentctrl - Spring Boot API with JWT and Swagger
 
+## Project Description
+
+**Contentctrl** is a backend system built using **Spring Boot**, designed to provide a RESTful API that implements authentication via **JWT** (JSON Web Tokens). The application also features automatic API documentation using **Swagger** and code documentation via **Javadoc**.
+
+The application is created to manage users and provide a secure system to control access to resources based on authentication and authorization. With JWT implementation, the system ensures that only authenticated users can access certain protected endpoints.
+
+ 
 
 
 
