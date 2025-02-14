@@ -20,3 +20,23 @@ public class ContentctrlApplication {
 	}
 
 }
+
+/* exemplo de uso 
+ * 
+ * http://localhost:8080/contentctrl/users/register
+ * {
+  	"username": "vanderlei",
+  	"email": "sovanderlei@hotmail.com",
+  	"password": "vanderlei123"
+	}
+ * 
+ * 
+ * http://localhost:8080/contentctrl/users/login
+ * {
+  	"username": "vanderlei",
+  	"password": "vanderlei123"
+	}
+ * 
+ * 
+ * 
+ * */

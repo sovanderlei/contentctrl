@@ -57,11 +57,13 @@ public class UserService {
      * @throws RuntimeException If the username is not found or credentials are invalid.
      */
     public String authenticateUser(String username, String password) {
-        User user = userRepository.findByUsername(username);
-
+    	 
+    	User user = userRepository.findByUsername(username);
+         
         if (user == null) {
             throw new RuntimeException("User not found");
         }
+         
         if (passwordEncoder.matches(password, user.getPassword())) {
             return jwtUtil.generateToken(username);
         } else {

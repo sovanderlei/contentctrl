@@ -26,8 +26,7 @@ public class UserController {
                  content = @Content(schema = @Schema(implementation = User.class)))
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(
-        @Parameter(description = "Information of the user to be registered") @RequestBody User user) {
-        user.setPassword(userService.getPasswordEncoder(user.getPassword()));
+        @Parameter(description = "Information of the user to be registered") @RequestBody User user) { 
         User createdUser = userService.createUser(user);
         return ResponseEntity.status(201).body(createdUser);  // Status 201 Created
     }
