@@ -11,11 +11,11 @@ import java.util.Optional;
  * Service class responsible for managing branch-related operations,
  * including retrieval, creation, updating, and deletion of branch records.
  * <p>
- * Created by: Vanderlei Soares de OLiveira
+ * Created by: Vanderlei Soares de Oliveira
  * Creation Date: 2025-02-10
  * </p>
  * 
- * @author Vanderlei Soares de OLiveira
+ * @author Vanderlei Soares de Oliveira
  * @version 1.0
  */
 @Service
@@ -56,11 +56,10 @@ public class BranchService {
      * Retrieves a branch by its ID.
      *
      * @param id The ID of the branch to fetch.
-     * @return The branch object if found, otherwise null.
+     * @return An Optional containing the branch if found, otherwise empty.
      */
-    public Branch getBranchById(Long id) {
-        Optional<Branch> branch = branchRepository.findById(id);
-        return branch.orElse(null);
+    public Optional<Branch> getBranchById(Long id) {
+        return branchRepository.findById(id);
     }
 
     /**
@@ -68,22 +67,26 @@ public class BranchService {
      *
      * @param id The ID of the branch to update.
      * @param branch The new details of the branch.
-     * @return The updated branch, or null if the branch is not found.
+     * @return An Optional containing the updated branch if found, otherwise empty.
      */
-    public Branch updateBranch(Long id, Branch branch) {
-        if (branchRepository.existsById(id)) {
+    public Optional<Branch> updateBranch(Long id, Branch branch) {
+        return branchRepository.findById(id).map(existingBranch -> {
             branch.setId(id);
             return branchRepository.save(branch);
-        }
-        return null;
+        });
     }
 
     /**
      * Deletes a branch from the system by its ID.
      *
      * @param id The ID of the branch to delete.
+     * @return True if the branch was deleted, false if not found.
      */
-    public void deleteBranch(Long id) {
-        branchRepository.deleteById(id);
+    public boolean deleteBranch(Long id) {
+        if (branchRepository.existsById(id)) {
+            branchRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

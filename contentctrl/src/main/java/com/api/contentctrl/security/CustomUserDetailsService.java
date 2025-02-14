@@ -15,7 +15,15 @@ public class CustomUserDetailsService implements UserDetailsService {
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+ 
+  
+     //@Override
+     //public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+     //     return userRepository.findByUsername(username)
+     //               .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+     //}
+   
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
@@ -30,5 +38,10 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .roles("USER")  // Define user role
                 .build();
     }
+    
+    
+    
+    
+    
 }
 

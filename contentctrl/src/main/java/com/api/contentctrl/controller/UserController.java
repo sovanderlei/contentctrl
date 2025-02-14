@@ -28,7 +28,8 @@ public class UserController {
     public ResponseEntity<User> registerUser(
         @Parameter(description = "Information of the user to be registered") @RequestBody User user) {
         user.setPassword(userService.getPasswordEncoder(user.getPassword()));
-        return ResponseEntity.ok(user);
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.status(201).body(createdUser);  // Status 201 Created
     }
 
     @Operation(summary = "Authenticate user", description = "Performs user login and returns a JWT token.")
@@ -36,7 +37,7 @@ public class UserController {
                  content = @Content(schema = @Schema(type = "string", example = "Bearer <JWT_TOKEN>")))
     @ApiResponse(responseCode = "401", description = "Invalid credentials")
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(
+    public ResponseEntity<String> loginUser(
         @Parameter(description = "User credentials for login") @RequestBody User user) {
         try {
             String token = userService.authenticateUser(user.getUsername(), user.getPassword());
@@ -50,17 +51,19 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "Users found successfully", 
                  content = @Content(schema = @Schema(implementation = User.class)))
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);  // Status 200 OK
     }
 
     @Operation(summary = "Create a new user", description = "Creates a new user in the system.")
     @ApiResponse(responseCode = "201", description = "User successfully created", 
                  content = @Content(schema = @Schema(implementation = User.class)))
     @PostMapping
-    public User createUser(
+    public ResponseEntity<User> createUser(
         @Parameter(description = "Information of the new user to be created") @RequestBody User user) {
-        return userService.createUser(user);
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.status(201).body(createdUser);  // Status 201 Created
     }
 
     @Operation(summary = "Get user by ID", description = "Returns details of a user based on the provided ID.")
@@ -68,9 +71,11 @@ public class UserController {
                  content = @Content(schema = @Schema(implementation = User.class)))
     @ApiResponse(responseCode = "404", description = "User not found")
     @GetMapping("/{id}")
-    public User getUserById(
+    public ResponseEntity<User> getUserById(
         @Parameter(description = "ID of the user to be retrieved") @PathVariable Long id) {
-        return userService.getUserById(id);
+        return userService.getUserById(id)
+            .map(user -> ResponseEntity.ok(user))  // Status 200 OK
+            .orElseGet(() -> ResponseEntity.status(404).build());  // Status 404 Not Found
     }
 
     @Operation(summary = "Update user", description = "Updates the details of an existing user.")
@@ -78,17 +83,23 @@ public class UserController {
                  content = @Content(schema = @Schema(implementation = User.class)))
     @ApiResponse(responseCode = "404", description = "User not found")
     @PutMapping("/{id}")
-    public User updateUser(
+    public ResponseEntity<User> updateUser(
         @Parameter(description = "ID of the user to be updated") @PathVariable Long id,
         @Parameter(description = "User data to be updated") @RequestBody User user) {
-        return userService.updateUser(id, user);
+        return userService.updateUser(id, user)
+            .map(updatedUser -> ResponseEntity.ok(updatedUser))  // Status 200 OK
+            .orElseGet(() -> ResponseEntity.status(404).build());  // Status 404 Not Found
     }
 
     @Operation(summary = "Delete user", description = "Deletes a user based on the provided ID.")
     @ApiResponse(responseCode = "200", description = "User successfully deleted")
     @ApiResponse(responseCode = "404", description = "User not found")
     @DeleteMapping("/{id}")
-    public void deleteUser(@Parameter(description = "ID of the user to be deleted") @PathVariable Long id) {
-        userService.deleteUser(id);
+    public ResponseEntity<Void> deleteUser(@Parameter(description = "ID of the user to be deleted") @PathVariable Long id) {
+        if (userService.deleteUser(id)) {
+            return ResponseEntity.status(200).build();  // Status 200 OK
+        } else {
+            return ResponseEntity.status(404).build();  // Status 404 Not Found
+        }
     }
 }

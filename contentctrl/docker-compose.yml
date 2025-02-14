@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Serviço MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: contentctrl-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: odavi240175
+      MYSQL_DATABASE: dbcontentctrl
+    ports:
+      - "3307:3306"  # Alterando para 3307 para evitar conflitos
+    networks:
+      - app-network
+    volumes:
+      - mysql-data:/var/lib/mysql  # Volume persistente para dados do MySQL
+
+  # Serviço Tomcat
+  tomcat:
+    image: tomcat:9.0
+    container_name: tomcat
+    ports:
+      - "8080:8080"  # Tomcat exposto na porta 8080
+    volumes:
+      - ./target:/usr/local/tomcat/webapps  # Volume do diretório ./target para o Tomcat
+    networks:
+      - app-network
+    depends_on:
+      - springboot  # Garantir que o Tomcat depende do Spring Boot para inicialização
+
+  # Serviço Spring Boot
+  springboot:
+    build: .  # Certifique-se de que está criando corretamente o contêiner com o WAR
+    container_name: contentctrl-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/dbcontentctrl  # URL do MySQL
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: odavi240175
+    depends_on:
+      - mysql  # Dependência explícita do MySQL
+    ports:
+      - "8082:8080"  # Mapeamento para porta 8082 externa
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge  # Usando rede bridge para comunicação entre os containers
+
+volumes:
+  mysql-data:
+    driver: local  # Volume persistente para dados do MySQL

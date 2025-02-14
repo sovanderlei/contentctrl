@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 class CompanyControllerTest {
 
@@ -69,43 +70,46 @@ class CompanyControllerTest {
     }
 
     @Test
-    void testGetCompanyById() throws Exception {
+    void testGetCompanyById() throws Exception { 
         Company company = new Company();
         company.setName("Company 1");
-
-        when(companyService.getCompanyById(1L)).thenReturn(company);
-
+ 
+        when(companyService.getCompanyById(1L)).thenReturn(Optional.of(company));
+ 
         mockMvc.perform(get("/contentctrl/companies/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Company 1"));
-
+                .andExpect(status().isOk())  
+                .andExpect(jsonPath("$.name").value("Company 1"));  
+ 
         verify(companyService, times(1)).getCompanyById(1L);
     }
 
+
     @Test
-    void testUpdateCompany() throws Exception {
+    void testUpdateCompany() throws Exception { 
         Company updatedCompany = new Company();
         updatedCompany.setName("Updated Company");
-
-        when(companyService.updateCompany(eq(1L), any(Company.class))).thenReturn(updatedCompany);
-
+ 
+        when(companyService.updateCompany(eq(1L), any(Company.class))).thenReturn(Optional.of(updatedCompany));
+ 
         mockMvc.perform(put("/contentctrl/companies/1")
                 .contentType("application/json")
                 .content("{\"name\":\"Updated Company\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Updated Company"));
-
+                .andExpect(status().isOk())  
+                .andExpect(jsonPath("$.name").value("Updated Company"));  
+ 
         verify(companyService, times(1)).updateCompany(eq(1L), any(Company.class));
     }
 
+
     @Test
-    void testDeleteCompany() throws Exception {
-        doNothing().when(companyService).deleteCompany(1L);
-
+    void testDeleteCompany() throws Exception { 
+        when(companyService.deleteCompany(1L)).thenReturn(true);   
         mockMvc.perform(delete("/contentctrl/companies/1"))
-                .andExpect(status().isOk());
-
+                .andExpect(status().isOk());  
+ 
         verify(companyService, times(1)).deleteCompany(1L);
     }
+    
+
 }
 

@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 class UserControllerTest {
 
@@ -36,20 +37,19 @@ class UserControllerTest {
     void testRegisterUser() throws Exception {
         User user = new User();
         user.setUsername("testUser");
-        user.setPassword("testPassword");
-
-        when(userService.getPasswordEncoder(anyString())).thenReturn("encodedPassword");
+        user.setPassword("password");
+ 
         when(userService.createUser(any(User.class))).thenReturn(user);
-
+ 
         mockMvc.perform(post("/contentctrl/users/register")
                 .contentType("application/json")
-                .content("{\"username\":\"testUser\", \"password\":\"testPassword\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.username").value("testUser"))
-                .andExpect(jsonPath("$.password").value("encodedPassword"));
-
+                .content("{\"username\":\"testUser\", \"password\":\"password\"}"))
+                .andExpect(status().isCreated())  
+                .andExpect(jsonPath("$.username").value("testUser"));   
+ 
         verify(userService, times(1)).createUser(any(User.class));
     }
+
 
     @Test
     void testLoginUser() throws Exception {
@@ -89,42 +89,43 @@ class UserControllerTest {
     }
 
     @Test
-    void testGetUserById() throws Exception {
+    void testGetUserById() throws Exception { 
         User user = new User();
         user.setUsername("testUser");
-
-        when(userService.getUserById(1L)).thenReturn(user);
-
+ 
+        when(userService.getUserById(1L)).thenReturn(Optional.of(user));
+ 
         mockMvc.perform(get("/contentctrl/users/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.username").value("testUser"));
-
+                .andExpect(status().isOk())  
+                .andExpect(jsonPath("$.username").value("testUser"));  
+ 
         verify(userService, times(1)).getUserById(1L);
     }
 
+
     @Test
-    void testDeleteUser() throws Exception {
-        doNothing().when(userService).deleteUser(1L);
-
+    void testDeleteUser() throws Exception { 
+        when(userService.deleteUser(1L)).thenReturn(true);   
         mockMvc.perform(delete("/contentctrl/users/1"))
-                .andExpect(status().isOk());
-
+                .andExpect(status().isOk());  
         verify(userService, times(1)).deleteUser(1L);
     }
 
+
     @Test
-    void testUpdateUser() throws Exception {
+    void testUpdateUser() throws Exception { 
         User updatedUser = new User();
         updatedUser.setUsername("updatedUser");
-
-        when(userService.updateUser(eq(1L), any(User.class))).thenReturn(updatedUser);
-
+ 
+        when(userService.updateUser(eq(1L), any(User.class))).thenReturn(Optional.of(updatedUser));
+ 
         mockMvc.perform(put("/contentctrl/users/1")
                 .contentType("application/json")
                 .content("{\"username\":\"updatedUser\", \"password\":\"newPassword\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.username").value("updatedUser"));
-
+                .andExpect(status().isOk())  
+                .andExpect(jsonPath("$.username").value("updatedUser"));   
+ 
         verify(userService, times(1)).updateUser(eq(1L), any(User.class));
     }
+
 }

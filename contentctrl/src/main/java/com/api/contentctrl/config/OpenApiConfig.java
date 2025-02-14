@@ -10,8 +10,8 @@ import io.swagger.v3.oas.models.info.Info;
 @Configuration
 public class OpenApiConfig {
 
-	//Swagger UI: http://localhost:8080/swagger-ui/index.html
-	//sOpenAPI JSON: http://localhost:8080/v3/api-docs/public-api
+	//Swagger UI: http://localhost:8082/swagger-ui/index.html
+	//sOpenAPI JSON: http://localhost:8082/v3/api-docs/public-api
 			
     @Bean
     public GroupedOpenApi publicApi() {

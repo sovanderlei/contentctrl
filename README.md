@@ -1,4 +1,4 @@
-# Contentctrl - Spring Boot API with JWT, Swagger, JUnit, Mockito
+# Contentctrl - Spring Boot API with JWT, Swagger, JUnit, Mockito, Docker, Kubernete 
 
 ## Project Description
 
@@ -161,6 +161,8 @@ If you want to contribute to this project, follow these steps:
 - **Swagger**: 
 ![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/swagger001.png)
 
+![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/swagger002.png)
+
 ## Testing
 
 The project uses **JUnit** and **Mockito** for unit testing and mocking dependencies in the controller layer.
@@ -195,3 +197,102 @@ void testGetAllBranches() throws Exception {
 }
 ```
  
+# Docker Kubernetes
+
+This project is a **Spring Boot**, **MySQL**, and **Tomcat** application, with support for execution via **Docker** and **Kubernetes**.
+
+## 🛠️ Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/) (or another Kubernetes cluster)
+
+---
+
+## 🚀 Running with Docker
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/sovanderlei/contentctrl.git
+   cd contentctrl  ```
+   
+2. **Build the project using Maven:**
+ 
+```mvn clean package```
+
+3. **Build and run the containers with Docker Compose:**
+ 
+```docker-compose up --build -d```
+
+4. **Check if the containers are running:**
+ 
+```docker ps```
+
+5. **Access the application in your browser:**
+
+Spring Boot API: http://localhost:8082
+Tomcat: http://localhost:8080
+MySQL: Running on port 3307 (accessible via a MySQL client)
+Stop the containers:
+ 
+```docker-compose down```
+
+
+## ☸️ Running with Kubernetes
+## 1 ️⃣  Start the Kubernetes Cluster
+
+**If using Minikube, start the cluster:**
+ 
+```minikube start```
+
+## 2 ️⃣  Deploying the Kubernetes Resources
+
+**Apply the Kubernetes manifests:**
+
+```kubectl apply -f kubernetes/```
+
+**Check running pods:**
+
+```kubectl get pods```
+
+**Check running services:**
+
+```kubectl get svc```
+
+**Access the application via Kubernetes**
+
+**To expose the application in Minikube, run:**
+
+```minikube service contentctrl-service```
+
+**To remove the Kubernetes resources:**
+
+```kubectl delete -f kubernetes/```
+
+
+## 📜 Project Structure
+ 
+```
+contentctrl/
+	│── src/                     # Application source code
+	│── kubernetes/              # Kubernetes configuration files
+	│── docker-compose.yml       # Docker Compose configuration
+	│── Dockerfile               # Application container configuration
+	│── README.md                # This file
+```
+
+## 🛠️ Technologies Used
+
+**Spring Boot**
+
+- **MySQL**
+- **Docker**
+- **Kubernetes**
+- **Tomcat**
+  
+This ensures that anyone can easily run the project using **Docker** or **Kubernetes**! 🚀
+
+

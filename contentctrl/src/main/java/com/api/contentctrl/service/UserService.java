@@ -4,6 +4,7 @@ import com.api.contentctrl.modal.User;
 import com.api.contentctrl.repository.UserRepository;
 import com.api.contentctrl.security.JWTUtil;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,11 +14,11 @@ import org.springframework.stereotype.Service;
  * Service class responsible for user-related operations, including authentication,
  * password encryption, and CRUD operations.
  * <p>
- * Created by: Vanderlei Soares de OLiveira
+ * Created by: Vanderlei Soares de Oliveira
  * Creation Date: 2025-02-10
  * </p>
  * 
- * @author Vanderlei Soares de OLiveira
+ * @author Vanderlei Soares de Oliveira
  * @version 1.0
  */
 @Service
@@ -92,12 +93,11 @@ public class UserService {
      * Retrieves a user by their ID.
      *
      * @param id The ID of the user to fetch.
-     * @return The user object if found.
+     * @return An Optional containing the user if found, otherwise empty.
      * @throws RuntimeException If the user is not found.
      */
-    public User getUserById(Long id) {
-        return userRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
     }
 
     /**
@@ -105,22 +105,28 @@ public class UserService {
      *
      * @param id The ID of the user to update.
      * @param userDetails The new details of the user.
-     * @return The updated user.
+     * @return An Optional containing the updated user if found, otherwise empty.
      * @throws RuntimeException If the user is not found.
      */
-    public User updateUser(Long id, User userDetails) {
-        User user = getUserById(id);
-        user.setUsername(userDetails.getUsername());
-        user.setPassword(passwordEncoder.encode(userDetails.getPassword()));  
-        return userRepository.save(user);
+    public Optional<User> updateUser(Long id, User userDetails) {
+        return userRepository.findById(id).map(existingUser -> {
+            existingUser.setUsername(userDetails.getUsername());
+            existingUser.setPassword(passwordEncoder.encode(userDetails.getPassword()));  
+            return userRepository.save(existingUser);
+        });
     }
 
     /**
      * Deletes a user from the system by their ID.
      *
      * @param id The ID of the user to delete.
+     * @return True if the user was deleted, false if not found.
      */
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+    public boolean deleteUser(Long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

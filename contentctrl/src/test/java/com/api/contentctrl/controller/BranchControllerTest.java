@@ -1,5 +1,5 @@
 package com.api.contentctrl.controller;
- 
+
 import com.api.contentctrl.modal.Branch;
 import com.api.contentctrl.service.BranchService;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +16,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 class BranchControllerTest {
 
@@ -73,8 +75,8 @@ class BranchControllerTest {
     void testGetBranchById() throws Exception {
         Branch branch = new Branch();
         branch.setName("Branch 1");
-
-        when(branchService.getBranchById(1L)).thenReturn(branch);
+ 
+        when(branchService.getBranchById(1L)).thenReturn(Optional.of(branch));
 
         mockMvc.perform(get("/contentctrl/branches/1"))
                 .andExpect(status().isOk())
@@ -84,29 +86,34 @@ class BranchControllerTest {
     }
 
     @Test
-    void testUpdateBranch() throws Exception {
+    void testUpdateBranch() throws Exception { 
         Branch updatedBranch = new Branch();
         updatedBranch.setName("Updated Branch");
-
-        when(branchService.updateBranch(eq(1L), any(Branch.class))).thenReturn(updatedBranch);
-
+ 
+        when(branchService.updateBranch(eq(1L), any(Branch.class))).thenReturn(Optional.of(updatedBranch));
+ 
         mockMvc.perform(put("/contentctrl/branches/1")
                 .contentType("application/json")
                 .content("{\"name\":\"Updated Branch\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Updated Branch"));
-
+                .andExpect(status().isOk()) 
+                .andExpect(jsonPath("$.name").value("Updated Branch"));   
+ 
         verify(branchService, times(1)).updateBranch(eq(1L), any(Branch.class));
     }
-
+ 
     @Test
-    void testDeleteBranch() throws Exception {
-        doNothing().when(branchService).deleteBranch(1L);
-
+    void testDeleteBranch() throws Exception { 
+        doThrow(new NoSuchElementException("Branch not found")).when(branchService).deleteBranch(1L); 
         mockMvc.perform(delete("/contentctrl/branches/1"))
-                .andExpect(status().isOk());
-
+                .andExpect(status().isNotFound());   
+ 
         verify(branchService, times(1)).deleteBranch(1L);
     }
-}
+ 
 
+
+
+    
+    
+
+}

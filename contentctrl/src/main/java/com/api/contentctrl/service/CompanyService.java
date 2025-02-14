@@ -11,11 +11,11 @@ import java.util.Optional;
  * Service class responsible for managing company-related operations,
  * including retrieval, creation, updating, and deletion of company records.
  * <p>
- * Created by: Vanderlei Soares de OLiveira
+ * Created by: Vanderlei Soares de Oliveira
  * Creation Date: 2025-02-10
  * </p>
  * 
- * @author Vanderlei Soares de OLiveira
+ * @author Vanderlei Soares de Oliveira
  * @version 1.0
  */
 @Service
@@ -56,11 +56,10 @@ public class CompanyService {
      * Retrieves a company by its ID.
      *
      * @param id The ID of the company to fetch.
-     * @return The company object if found, otherwise null.
+     * @return An Optional containing the company if found, otherwise empty.
      */
-    public Company getCompanyById(Long id) {
-        Optional<Company> company = companyRepository.findById(id);
-        return company.orElse(null);
+    public Optional<Company> getCompanyById(Long id) {
+        return companyRepository.findById(id);
     }
 
     /**
@@ -68,22 +67,26 @@ public class CompanyService {
      *
      * @param id The ID of the company to update.
      * @param company The new details of the company.
-     * @return The updated company, or null if the company is not found.
+     * @return An Optional containing the updated company if found, otherwise empty.
      */
-    public Company updateCompany(Long id, Company company) {
-        if (companyRepository.existsById(id)) {
+    public Optional<Company> updateCompany(Long id, Company company) {
+        return companyRepository.findById(id).map(existingCompany -> {
             company.setId(id);
             return companyRepository.save(company);
-        }
-        return null;
+        });
     }
 
     /**
      * Deletes a company from the system by its ID.
      *
      * @param id The ID of the company to delete.
+     * @return True if the company was deleted, false if not found.
      */
-    public void deleteCompany(Long id) {
-        companyRepository.deleteById(id);
+    public boolean deleteCompany(Long id) {
+        if (companyRepository.existsById(id)) {
+            companyRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
