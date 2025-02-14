@@ -160,7 +160,6 @@ If you want to contribute to this project, follow these steps:
 ### See images of the project below
 - **Swagger**: 
 ![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/swagger001.png)
-
 ![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/swagger002.png)
 
 ## Testing
@@ -241,14 +240,14 @@ Stop the containers:
 ```docker-compose down```
 
 
-## ☸️ Running with Kubernetes
-## 1 ️⃣  Start the Kubernetes Cluster
+## ☸️  Running with Kubernetes 
+## 1  ️⃣   Start the Kubernetes Cluster
 
 **If using Minikube, start the cluster:**
  
 ```minikube start```
 
-## 2 ️⃣  Deploying the Kubernetes Resources
+## 2   ️⃣   Deploying the Kubernetes Resources 
 
 **Apply the Kubernetes manifests:**
 
@@ -273,7 +272,7 @@ Stop the containers:
 ```kubectl delete -f kubernetes/```
 
 
-## 📜 Project Structure
+##  📜 Project Structure
  
 ```
 contentctrl/
