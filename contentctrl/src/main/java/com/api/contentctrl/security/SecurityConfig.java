@@ -9,42 +9,66 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
+    private final JWTUtil jwtUtil; // Adicionei o JWTUtil para validar tokens
 
-    // Inject the UserDetailsService or create your own
-    public SecurityConfig(UserDetailsService userDetailsService) {
+    public SecurityConfig(UserDetailsService userDetailsService, JWTUtil jwtUtil) {
         this.userDetailsService = userDetailsService;
+        this.jwtUtil = jwtUtil;
     }
 
-    @SuppressWarnings({ "removal", "deprecation" })
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .authorizeRequests()
-                .requestMatchers("/contentctrl/users/register", "/contentctrl/users/**", "/contentctrl/users/login").permitAll()
-                // Allow access to Swagger UI and related resources /swagger-ui/index.html
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))  
+            .csrf(csrf -> csrf.disable())  
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/public/**").permitAll()  
+                .requestMatchers("/contentctrl/users/register", "/contentctrl/users/login").permitAll()
                 .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
-                .anyRequest().authenticated()
-            .and()
-            .formLogin().disable();   
+                .anyRequest().authenticated()  
+            )
+            .addFilterBefore(new JWTAuthenticationFilter(jwtUtil, userDetailsService), 
+                             UsernamePasswordAuthenticationFilter.class); // 🔹 Adiciona o filtro JWT
 
         return http.build();
     }
 
+    // Configuração do CORS 
+    @Bean
+    public UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        
+        config.setAllowedOrigins(List.of("http://localhost:3000"));   
+        // OU use setAllowedOriginPatterns("*") se precisar de credenciais
+        // config.setAllowedOriginPatterns(List.of("*"));
+        
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true); 
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();  
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        // Configure the AuthenticationManagerBuilder to use the UserDetailsService and PasswordEncoder
-        AuthenticationManagerBuilder authenticationManagerBuilder = 
+        AuthenticationManagerBuilder authenticationManagerBuilder =
             http.getSharedObject(AuthenticationManagerBuilder.class);
 
         authenticationManagerBuilder.userDetailsService(userDetailsService)

@@ -1,0 +1,29 @@
+/* Adicione este CSS em seu arquivo de estilo */
+.min-vh-100 {
+    min-height: 100vh;
+  }
+  
+  .sidebar-open {
+    overflow-x: hidden;
+    display: block;
+  }
+  
+  .sidebar-closed {
+    display: none;
+  }
+  
+  .nav-link {
+    transition: all 0.2s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(0,0,0,0.1);
+  }
+  
+  .collapse {
+    transition: all 0.3s ease;
+  }
+  
+  main {
+    overflow: hidden;
+  }

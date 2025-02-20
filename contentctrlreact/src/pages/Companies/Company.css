@@ -1,0 +1,21 @@
+/* companyGrid.css */
+.company-grid-card {
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .company-grid-card .table {
+    margin-bottom: 0;
+  }
+  
+  /* companyForm.css */
+  .company-form-card {
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .company-form-card .form-control {
+    max-width: 400px;
+  }

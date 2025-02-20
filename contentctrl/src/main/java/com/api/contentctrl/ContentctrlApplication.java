@@ -25,9 +25,10 @@ public class ContentctrlApplication {
  * 
  * http://localhost:8080/contentctrl/users/register
  * {
-  	"username": "vanderlei",
-  	"email": "sovanderlei@hotmail.com",
-  	"password": "vanderlei123"
+  	  "username": "vanderlei",
+  	  "email": "sovanderlei@hotmail.com",
+	  "password": "vanderlei123",
+	  "idbranch": "1"
 	}
  * 
  * 

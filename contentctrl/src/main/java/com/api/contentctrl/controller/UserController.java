@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/contentctrl/users")
 @Tag(name = "User Controller", description = "Operations related to users")

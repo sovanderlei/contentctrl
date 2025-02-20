@@ -1,0 +1,78 @@
+/* Defina o body com flexbox para garantir que o conteúdo ocupe toda a altura da tela */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o conteúdo ocupe 100% da altura da tela */
+  margin: 0; /* Remove margens padrões */
+}
+
+/* A content vai ocupar o restante da tela e forçar o footer a ficar fixo */
+.content {
+  display: flex;
+  flex: 1; /* Faz o conteúdo ocupar o espaço restante */
+  background-color: #575d63;
+}
+
+/* Sidebar com animação */
+.sidebar {
+  width: 250px;
+  background-color: #343a40;
+  color: white;
+  transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar .nav-link {
+  color: white;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #495057;
+}
+
+.sidebar .submenu {
+  display: none;
+  padding-left: 15px;
+}
+
+.sidebar .submenu.show {
+  display: block;
+}
+
+/* Rodapé fixo na parte inferior da tela */
+.footer {
+  background-color: #f8f9fa;
+  padding: 10px;
+  text-align: center;
+  margin-top: auto; /* Faz o rodapé ficar fixo na parte inferior */
+}
+
+/* Estilo para imagem do perfil */
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Ajuste do layout para o conteúdo principal (main-content) */
+.main-content {
+  padding: 20px;
+  flex-grow: 1; /* Faz com que o conteúdo principal cresça e ocupe o espaço restante */
+}
+
+.navbar-text {
+  font-weight: bold;
+}
+
+.sidebar-toggle-btn {
+  display: none;
+}
+
+/* Exibindo o botão de abrir o menu apenas quando o menu estiver fechado */
+.sidebar.closed + .main-content .sidebar-toggle-btn {
+  display: block;
+}

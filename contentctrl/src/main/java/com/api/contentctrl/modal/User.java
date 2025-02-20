@@ -29,6 +29,11 @@ public class User {
     @Size(min = 6, message = "Password must be at least 6 characters long")
     @Schema(description = "User's password", example = "securepassword123", required = true)
     private String password;
+    
+    @NotBlank(message = "Id branch cannot be blank") 
+    @Schema(description = "Id branch",  required = true)
+    private Long idbranch;
+    
 
     // Default constructor
     public User() {}
@@ -65,4 +70,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public Long getIdbranch() {
+		return idbranch;
+	}
+
+	public void setIdbranch(Long idbranch) {
+		this.idbranch = idbranch;
+	}
+     
+    
 }
