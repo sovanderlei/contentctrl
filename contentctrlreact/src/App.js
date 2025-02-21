@@ -41,9 +41,12 @@ const App = () => {
           <Routes>
             <Route path="/home" element={<importsPages.Home />} />
             <Route path="/about" element={<importsPages.About />} />
+
+            <Route path="/UserGrid" element={<importsPages.UserGrid />} />
             <Route path="/users" element={<importsPages.UserGrid />} />
             <Route path="/users/new" element={<importsPages.UserForm />} />
             <Route path="/users/edit/:id" element={<importsPages.UserForm />} />
+
             <Route path="/CompaniesGrid" element={<importsPages.CompaniesGrid />} />
             <Route path="/companies" element={<importsPages.CompaniesGrid />} />
             <Route path="/companies/new" element={<importsPages.CompaniesForm />} />

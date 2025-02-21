@@ -195,7 +195,12 @@ void testGetAllBranches() throws Exception {
            .andExpect(jsonPath("$[1].name").value("Branch 2"));
 }
 ```
- 
+
+
+---
+---
+
+
 # Docker Kubernetes
 
 This project is a **Spring Boot**, **MySQL**, and **Tomcat** application, with support for execution via **Docker** and **Kubernetes**.
@@ -293,5 +298,108 @@ contentctrl/
 - **Tomcat**
   
 This ensures that anyone can easily run the project using **Docker** or **Kubernetes**! 🚀
+
+
+---
+---
+
+
+# 📌 Frontend - CRUD Dinâmico com React e JWT
+
+Este é um **frontend** desenvolvido em **React** para consumir uma API REST com **autenticação JWT**. Ele permite realizar operações **CRUD de forma dinâmica** para diferentes endpoints, como `users`, `companies` e `branches`. Além disso, gerencia o token de autenticação e redireciona o usuário para a tela de login caso o token expire.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **React** (Vite)
+- **React Router Dom** (Gerenciamento de rotas)
+- **Axios** (Consumo de API)
+- **Tailwind CSS** (Estilização)
+- **Context API** (Gerenciamento de autenticação)
+- **LocalStorage** (Armazenamento do token JWT)
+
+---
+
+## 📥 Como baixar e executar o projeto
+
+### 1️⃣ Clonar o repositório:
+```sh
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
+
+2️ Acessar a pasta do projeto:
+ ```
+cd nome-do-projeto
+```
+
+3️ Instalar as dependências:
+ ```
+npm install
+```
+
+4️ Configurar a URL da API:
+Edite o arquivo .env e defina a variável de ambiente:
+ ```
+VITE_API_BASE_URL=http://localhost:8080/contentctrl
+```
+5️ Iniciar o servidor de desenvolvimento:
+ ```
+npm run dev
+```
+O projeto estará disponível em http://localhost:5173.
+
+
+## 🔑 Autenticação JWT
+O usuário faz login e recebe um token JWT, que é armazenado no LocalStorage.
+O token é enviado automaticamente em todas as requisições para endpoints protegidos.
+Se o token expirar, o usuário é redirecionado para a tela de login.
+
+✨ Funcionalidades Principais
+
+✅ Login e Logout com JWT
+✅ CRUD Dinâmico para múltiplos endpoints (users, companies, branches)
+✅ Proteção de Rotas (usuários não autenticados são redirecionados)
+✅ Armazenamento do Token e verificação automática de expiração
+
+## 🛠 Estrutura do Projeto
+```
+📦 src
+ ┣ 📂 components  # Componentes reutilizáveis
+ ┣ 📂 pages       # Páginas principais (Login, Dashboard, CRUDs)
+ ┣ 📂 services    # Serviços para chamadas à API
+ ┣ 📂 context     # Contexto de autenticação
+ ┣ 📂 hooks       # Hooks personalizados
+ ┣ 📂 styles      # Estilos globais
+ ┣ 📜 main.jsx    # Ponto de entrada do app
+ ┗ 📜 App.jsx     # Configuração de rotas
+```
+
+
+## 📄 Endpoints Utilizados
+- **Autenticação:** /users/login
+- **Usuários:** /users
+- **Empresas:** /companies
+- **Filiais:** /branches
+
+## 📌 Autor
+Feito por Seu Nome 💙🚀
+Se gostou do projeto, ⭐️ dê um star no repositório!
+ 
+```
+Esse README cobre **descrição, instalação, execução, autenticação JWT e estrutura do projeto**. Caso precise de ajustes, me avise! 🚀
+```
+
+### See images of the project below
+- **FrontEnd React**: 
+![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/reactproject01.png)
+![Texto alternativo](https://github.com/sovanderlei/contentctrl/blob/main/images/reactproject02.png)
+
+
+
+
+
+
+
 
 
