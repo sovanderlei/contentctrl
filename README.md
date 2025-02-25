@@ -3,30 +3,47 @@
 # Contentctrl - FrontEnd React  
 
 
-# 📌 Conteúdo  
+# 📌 Content  
 
-## **Backend - Spring Boot API**  
-1. [Descrição do Projeto](#project-description)  
-2. [Funcionalidades](#features)  
-3. [Tecnologias Utilizadas](#technologies-used)  
-4. [Estrutura do Projeto](#project-structure)  
-5. [Dependências](#dependencies)  
-6. [Como Executar](#running-the-project)  
-7. [Exemplos de Uso](#usage-examples)  
-8. [Testes](#testing)  
-9. [Documentação com Swagger](#swagger-documentation)  
-10. [Execução com Docker e Kubernetes](#docker-kubernetes)  
+## **Backend - Spring Boot API** 
+1. [Project Description](#project-description) 
+2. [Features](#features) 
+3. [Technologies Used](#technologies-used) 
+4. [Project Structure](#project-structure) 
+5. [Dependencies](#dependencies) 
+6. [How to Run](#running-the-project) 
+7. [Usage Examples](#usage-examples) 
+8. [Tests](#testing) 
+9. [Documentation with Swagger](#swagger-documentation) 
+10. [Running with Docker and Kubernetes](#docker-kubernetes) 
 
-## **Frontend - React**  
-1. [Descrição do Projeto](#frontend---crud-dinâmico-com-react-e-jwt)  
-2. [Tecnologias Utilizadas](#🚀-tecnologias-utilizadas)  
-3. [Como Baixar e Executar](#📥-como-baixar-e-executar-o-projeto)  
-4. [Autenticação JWT](#🔑-autenticação-jwt)  
-5. [Estrutura do Projeto](#🛠-estrutura-do-projeto)  
-6. [Endpoints Utilizados](#📄-endpoints-utilizados)  
-7. [Autor](#📌-autor)  
+## **Frontend - React** 
+1. [Project Description](#project-structure) 
+2. [Dependencies](#dependencies) 
+3. [How to Run](#running-the-project) 
+4. [Project Structure](#project-structure) 
+5. [Dependencies](#dependencies) 
+6. [How to Run](#running-the-project) 
+7. [Usage Examples](#usage-examples) 
+8. [Tests](#testing) 
+9. [Documentation with Swagger](#swagger-documentation) 
+10. [Running with Docker and Kubernetes](#docker-kubernetes) 
 
-
+## **Frontend - React** 
+1. [Project Description](#project-structure) 
+3. [Dependencies](#dependencies) 
+4. [Dependencies](#dependencies) 
+5. [Dependencies](#dependencies) 
+6. [How to Run](#running-the-project) 
+7. [Usage Examples](#usage-examples) 
+8. [Tests](#testing) 
+9. [Do Project](#frontend---dynamic-crud-with-react-and-jwt) 
+2. [Technologies Used](#🚀-technologies-used) 
+3. [How to Download and Run](#📥-how-to-download-and-run-the-project) 
+4. [JWT Authentication](#🔑-jwt-authentication) 
+5. [Project Structure](#🛠-project-structure) 
+6. [Endpoints Used](#📄-endpoints-used) 
+7. [Author](#📌-author)
 
 
 
