@@ -333,88 +333,87 @@ This ensures that anyone can easily run the project using **Docker** or **Kubern
 ---
 ---
 
+# 📌 Frontend - Dynamic CRUD with React and JWT
 
-# 📌 Frontend - CRUD Dinâmico com React e JWT
-
-Este é um **frontend** desenvolvido em **React** para consumir uma API REST com **autenticação JWT**. Ele permite realizar operações **CRUD de forma dinâmica** para diferentes endpoints, como `users`, `companies` e `branches`. Além disso, gerencia o token de autenticação e redireciona o usuário para a tela de login caso o token expire.
+This is a **frontend** developed in **React** to consume a REST API with **JWT authentication**. It allows you to perform **CRUD operations dynamically** for different endpoints, such as `users`, `companies` and `branches`. In addition, it manages the authentication token and redirects the user to the login screen if the token expires.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Technologies Used
 
 - **React** (Vite)
-- **React Router Dom** (Gerenciamento de rotas)
-- **Axios** (Consumo de API)
-- **Tailwind CSS** (Estilização)
-- **Context API** (Gerenciamento de autenticação)
-- **LocalStorage** (Armazenamento do token JWT)
+- **React Router Dom** (Route management)
+- **Axios** (API consumption)
+- **Tailwind CSS** (Styling)
+- **Context API** (Authentication management)
+- **LocalStorage** (JWT token storage)
 
 ---
 
-## 📥 Como baixar e executar o projeto
+## 📥 How to download and run the project
 
-### 1️⃣ Clonar o repositório:
+### 1️⃣ Clone the repository:
 ```sh
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/your-username/your-repository.git
 ```
 
-2️ Acessar a pasta do projeto:
- ```
-cd nome-do-projeto
+2️ Access the project folder:
+```
+cd project-name
 ```
 
-3️ Instalar as dependências:
- ```
+3️ Install the dependencies:
+```
 npm install
 ```
 
-4️ Configurar a URL da API:
-Edite o arquivo .env e defina a variável de ambiente:
+4️ Configure the API URL:
+Edit the .env file and set the environment variable:
  ```
 VITE_API_BASE_URL=http://localhost:8080/contentctrl
 ```
-5️ Iniciar o servidor de desenvolvimento:
+5️ Start the development server:
  ```
 npm run dev
 ```
-O projeto estará disponível em http://localhost:5173.
+The project will be available at http://localhost:5173.
 
 
-## 🔑 Autenticação JWT
-O usuário faz login e recebe um token JWT, que é armazenado no LocalStorage.
-O token é enviado automaticamente em todas as requisições para endpoints protegidos.
-Se o token expirar, o usuário é redirecionado para a tela de login.
+## 🔑 JWT Authentication
+The user logs in and receives a JWT token, which is stored in LocalStorage.
+The token is automatically sent on every request to protected endpoints.
+If the token expires, the user is redirected to the login screen.
 
-✨ Funcionalidades Principais
+✨Main Features
 
-✅ Login e Logout com JWT
-✅ CRUD Dinâmico para múltiplos endpoints (users, companies, branches)
-✅ Proteção de Rotas (usuários não autenticados são redirecionados)
-✅ Armazenamento do Token e verificação automática de expiração
+✅ Login and Logout with JWT
+✅ Dynamic CRUD for multiple endpoints (users, companies, branches)
+✅ Route Protection (unauthenticated users are redirected)
+✅ Token Storage and automatic expiration check
 
-## 🛠 Estrutura do Projeto
+## 🛠 Project Structure
 ```
-📦 src
- ┣ 📂 components  # Componentes reutilizáveis
- ┣ 📂 pages       # Páginas principais (Login, Dashboard, CRUDs)
- ┣ 📂 services    # Serviços para chamadas à API
- ┣ 📂 context     # Contexto de autenticação
- ┣ 📂 hooks       # Hooks personalizados
- ┣ 📂 styles      # Estilos globais
- ┣ 📜 main.jsx    # Ponto de entrada do app
- ┗ 📜 App.jsx     # Configuração de rotas
+📦src
+┣ 📂 components # Reusable components
+┣ 📂 pages # Main pages (Login, Dashboard, CRUDs)
+┣ 📂 services # Services for API calls
+┣ 📂 context # Authentication context
+┣ 📂 hooks # Custom hooks
+┣ 📂 styles # Global styles
+┣ 📜 main.jsx # App entry point
+┗ 📜 App.jsx # Route configuration
 ```
 
 
-## 📄 Endpoints Utilizados
-- **Autenticação:** /users/login
-- **Usuários:** /users
-- **Empresas:** /companies
-- **Filiais:** /branches
+## 📄 Endpoints Used
+- **Authentication:** /users/login
+- **Users:** /users
+- **Companies:** /companies
+- **Branches:** /branches
 
 ## 📌 Autor
-Feito por Seu Nome 💙🚀
-Se gostou do projeto, ⭐️ dê um star no repositório!
+Made by Your Name 💙🚀
+If you liked the project, ⭐️ give the repository a star!
  
 ```
 Esse README cobre **descrição, instalação, execução, autenticação JWT e estrutura do projeto**. Caso precise de ajustes, me avise! 🚀
