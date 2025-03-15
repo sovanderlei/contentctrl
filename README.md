@@ -28,23 +28,7 @@
 8. [Tests](#testing) 
 9. [Documentation with Swagger](#swagger-documentation) 
 10. [Running with Docker and Kubernetes](#docker-kubernetes) 
-
-## **Frontend - React** 
-1. [Project Description](#project-structure) 
-3. [Dependencies](#dependencies) 
-4. [Dependencies](#dependencies) 
-5. [Dependencies](#dependencies) 
-6. [How to Run](#running-the-project) 
-7. [Usage Examples](#usage-examples) 
-8. [Tests](#testing) 
-9. [Do Project](#frontend---dynamic-crud-with-react-and-jwt) 
-2. [Technologies Used](#🚀-technologies-used) 
-3. [How to Download and Run](#📥-how-to-download-and-run-the-project) 
-4. [JWT Authentication](#🔑-jwt-authentication) 
-5. [Project Structure](#🛠-project-structure) 
-6. [Endpoints Used](#📄-endpoints-used) 
-7. [Author](#📌-author)
-
+ 
 
 
 ## Project Description
